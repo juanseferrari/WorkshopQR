@@ -27,16 +27,18 @@ router.post('/order', (req, res) => {
     /** Usar las siguientes constantes para el JSON de la orden */
     const externalReference = POS_ID + '-' + uuidv1();
     const basePath = req.protocol + '://' + req.get('host');
-    const title = req.body.title
-    const currency_id = CURRENCY_ID
-    const unit_price = req.body.unit_price
-    const quantity = req.body.quantity
-    const picture_url = basePath + req.body.picture_url
-    const notification_url = basePath + '/api/notification'
+    const title = req.body.title;
+    const currency_id = CURRENCY_ID;
+    const unit_price = req.body.unit_price;
+    const quantity = req.body.quantity;
+    const picture_url = basePath + req.body.picture_url;
+    const notification_url = basePath + '/api/notification';
 
     let options = {
-        uri: MP_ORDER_URL,
-        method: "POST",
+        /** Agregar en XXX la variable(url) de publicacion de orden (pista: es una variable declarada previamente) */
+        uri: XXX,
+        /** Agregar en XXX el metodo de publicacion de orden */
+        method: "XXX",
         json: true,
         body: {
             /**Ingresar aqui el JSON para publicar una orden con las constantes mencionadas mas arriba */
