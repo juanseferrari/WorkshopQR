@@ -48,4 +48,4 @@ Requisitos para realizar la integración:
 
 Hay 2 archivos que necesitarán modificar para lograr resolver el ejercicio:
 1. api > index.js
-2. 
+2. config > properties.config
