@@ -16,9 +16,8 @@ const ACCESS_TOKEN = properties.get('access_token'),
     POS_ID = properties.get('pos_id'),
     STORE_ID = properties.get('store_id'),
     /**Agregar el resto de la API de publicacion de ordenes en los espacios de XXX con variables declaradas previamente o con sentencias de la API */
-    MP_ORDER_URL = properties.get('mp_order_basepath') + USER_ID + '/stores/' + STORE_ID + '/pos/' + POS_ID + '/orders' + '?access_token=' + ACCESS_TOKEN,
+    MP_ORDER_URL = properties.get('mp_order_basepath') + USER_ID + '/stores/' + STORE_ID + '/pos/' + POS_ID + '/orders?access_token=' + ACCESS_TOKEN,
     MP_ORDERDELETE_URL = properties.get('mp_order_basepath') + USER_ID + '/pos/' + POS_ID + '/orders' + '?access_token=' + ACCESS_TOKEN,
-
     MP_MERCHANT_URL = properties.get('mp_merchant_basepath') + '%d?access_token=' + ACCESS_TOKEN;
 
 /**
@@ -60,9 +59,12 @@ router.post('/order', (req, res) => {
                 "total_amount": unit_price * quantity
             }]
         }
+
         /**Ingresar aqui el JSON para publicar una orden con las constantes mencionadas mas arriba */
 
     }
+    console.log(body);
+    console.log(uri);
 
     request(options, function(err, response, body) {
 
