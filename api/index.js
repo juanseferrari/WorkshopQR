@@ -19,8 +19,7 @@ const ACCESS_TOKEN = properties.get('access_token'),
     MP_ORDER_URL = properties.get('mp_order_basepath') + USER_ID + '/stores/' + STORE_ID + '/pos/' + POS_ID + '/orders' + '?access_token=' + ACCESS_TOKEN,
     MP_ORDERDELETE_URL = properties.get('mp_order_basepath') + USER_ID + '/pos/' + POS_ID + '/orders' + '?access_token=' + ACCESS_TOKEN,
 
-    MP_MERCHANT_URL = properties.get('mp_merchant_basepath') + '%d?access_token=' + ACCESS_TOKEN,
-    CURRENCY_ID = properties.get('currency_id');
+    MP_MERCHANT_URL = properties.get('mp_merchant_basepath') + '%d?access_token=' + ACCESS_TOKEN;
 
 /**
  * This resource creates an instore order for item payment
@@ -32,10 +31,8 @@ router.post('/order', (req, res) => {
     const basePath = req.protocol + '://' + req.get('host');
     const title = req.body.title;
     const description = "Compra en Mercado Pago";
-    const currency_id = CURRENCY_ID;
     const unit_price = req.body.unit_price;
     const quantity = req.body.quantity;
-    const picture_url = basePath + req.body.picture_url;
     const notification_url = basePath + '/api/notification';
     const expiration_date = "2023-08-22T16:34:56.559-04:00";
 
@@ -61,10 +58,7 @@ router.post('/order', (req, res) => {
                 "quantity": quantity,
                 "unit_measure": "unit",
                 "total_amount": unit_price * quantity
-            }],
-            "sponsor": {
-                "id": 446566691
-            }
+            }]
         }
         /**Ingresar aqui el JSON para publicar una orden con las constantes mencionadas mas arriba */
 
