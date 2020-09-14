@@ -14,8 +14,9 @@ var db = [];
 const ACCESS_TOKEN = properties.get('access_token'),
     USER_ID = properties.get('user_id'),
     POS_ID = properties.get('pos_id'),
-    /**Agregar el resto de la API de publicacion de ordenes en los espacios de XXX con variables declaradas previamente */
-    MP_ORDER_URL = properties.get('mp_order_basepath') + XXX + '/' + XXX + '?access_token=' + XXX,
+    STORE_ID = properties.get('store_id'),
+    /**Agregar el resto de la API de publicacion de ordenes en los espacios de XXX con variables declaradas previamente o con sentencias de la API */
+    MP_ORDER_URL = properties.get('mp_order_basepath') + XXX + '/stores/' + XXX + '/XXX/' + XXX + '/orders' + '?access_token=' + XXX,
     MP_MERCHANT_URL = properties.get('mp_merchant_basepath') + '%d?access_token=' + ACCESS_TOKEN,
     CURRENCY_ID = properties.get('currency_id');
 
@@ -28,11 +29,13 @@ router.post('/order', (req, res) => {
     const externalReference = POS_ID + '-' + uuidv1();
     const basePath = req.protocol + '://' + req.get('host');
     const title = req.body.title;
+    const description = "Compra en Mercado Pago";
     const currency_id = CURRENCY_ID;
     const unit_price = req.body.unit_price;
     const quantity = req.body.quantity;
     const picture_url = basePath + req.body.picture_url;
     const notification_url = basePath + '/api/notification';
+    const expiration_date = "2023-08-22T16:34:56.559-04:00";
 
     let options = {
         /** Agregar en XXX la variable(url) de publicacion de orden (pista: es una variable declarada previamente) */
