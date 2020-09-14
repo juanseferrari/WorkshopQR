@@ -47,7 +47,7 @@ router.post('/order', (req, res) => {
             "description": description,
             "notification_url": notification_url,
             "expiration_date": expiration_date,
-            "total_amount": 100.0,
+            "total_amount": unit_price,
             "items": [{
                 "sku_number": "KS955RUR",
                 "category": "FOOD",
@@ -56,7 +56,7 @@ router.post('/order', (req, res) => {
                 "unit_price": unit_price,
                 "quantity": quantity,
                 "unit_measure": "unit",
-                "total_amount": unit_price * quantity
+                "total_amount": unit_price
             }]
         }
 
@@ -64,7 +64,6 @@ router.post('/order', (req, res) => {
 
     }
     console.log(body);
-    console.log(uri);
 
     request(options, function(err, response, body) {
 
