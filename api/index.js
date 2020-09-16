@@ -31,7 +31,7 @@ router.post('/order', (req, res) => {
     const title = req.body.title;
     const description = "Compra en Mercado Pago";
     const unit_price = req.body.unit_price;
-    const quantity = req.body.quantity;
+    const quantity = parseInt(req.body.quantity);
     const notification_url = basePath + '/api/notification';
     const expiration_date = "2023-08-22T16:34:56.559-04:00";
 
@@ -63,7 +63,7 @@ router.post('/order', (req, res) => {
         /**Ingresar aqui el JSON para publicar una orden con las constantes mencionadas mas arriba */
 
     }
-    console.log(body);
+    console.log(options);
 
     request(options, function(err, response, body) {
 
@@ -76,7 +76,7 @@ router.post('/order', (req, res) => {
             db[externalReference] = 'unknown';
 
             return res.status(201).json({
-                "order": response.body
+                "external_reference": externalReference
             });
         }
     });
