@@ -67,7 +67,7 @@ router.post('/order', (req, res) => {
 
     request(options, function(err, response, body) {
 
-        if (err || response.statusCode !== 200) {
+        if (err || (response.statusCode !== 200 && response.statusCode !== 204)) {
             console.log(err);
             console.log(response.body);
             return res.sendStatus(500);
